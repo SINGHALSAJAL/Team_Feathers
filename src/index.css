@@ -1,0 +1,148 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 30% 96%;
+    --foreground: 160 15% 20%;
+
+    --card: 40 30% 98%;
+    --card-foreground: 160 15% 20%;
+
+    --popover: 40 30% 98%;
+    --popover-foreground: 160 15% 20%;
+
+    --primary: 143 23% 44%;
+    --primary-foreground: 40 30% 98%;
+
+    --secondary: 151 20% 36%;
+    --secondary-foreground: 40 30% 98%;
+
+    --muted: 40 10% 90%;
+    --muted-foreground: 160 10% 40%;
+
+    --accent: 34 27% 75%;
+    --accent-foreground: 160 15% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 40 30% 98%;
+
+    --border: 40 20% 86%;
+    --input: 40 20% 86%;
+    --ring: 143 23% 44%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply backdrop-blur-md bg-white/40 border border-white/30 shadow-lg;
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24 px-6 md:px-10;
+  }
+  
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+  }
+  
+  .slide-in {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideIn 0.8s ease forwards;
+  }
+  
+  .card-gradient {
+    @apply bg-gradient-to-b from-card to-secondary/5;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Custom page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms, transform 400ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-yoga-primary text-white py-3 px-6 rounded-md font-medium transition-all duration-300
+    hover:bg-yoga-secondary hover:shadow-md 
+    active:transform active:scale-[0.98] active:shadow-sm;
+}
+
+.btn-secondary {
+  @apply bg-transparent border border-yoga-primary text-yoga-primary py-3 px-6 rounded-md font-medium transition-all duration-300
+    hover:bg-yoga-primary/10 hover:shadow-sm 
+    active:transform active:scale-[0.98];
+}
+
+/* Form input styles */
+.input-field {
+  @apply w-full px-4 py-3 rounded-md border border-yoga-accent/50 bg-white/70 
+    focus:outline-none focus:ring-2 focus:ring-yoga-primary/30 focus:border-yoga-primary/50 
+    transition-all duration-300;
+}
